@@ -1,0 +1,3 @@
+[submodule "sfo"]
+	path = sfo
+	url = https://github.com/Jasily/py.dataformat.sfo.git
