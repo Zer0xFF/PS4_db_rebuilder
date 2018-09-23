@@ -35,14 +35,18 @@ def get_game_info_by_id(GameID) :
 	if(GameID not in info) :
 		info[GameID] = CUSA()
 
-		buffer = io.BytesIO()
-		ftp.cwd('/system_data/priv/appmeta/%s/' % GameID)
-		ftp.retrbinary("RETR param.sfo" , buffer.write)
-		buffer.seek(0)
-		sfo = SfoFile.from_reader(buffer)
-		info[GameID].sfo = sfo
-		info[GameID].size = ftp.size("/user/app/%s/app.pkg" % GameID)
-		info[GameID].is_usable = True
+		try:
+			buffer = io.BytesIO()
+			ftp.cwd('/system_data/priv/appmeta/%s/' % GameID)
+			ftp.retrbinary("RETR param.sfo" , buffer.write)
+			buffer.seek(0)
+			sfo = SfoFile.from_reader(buffer)
+			info[GameID].sfo = sfo
+			info[GameID].size = ftp.size("/user/app/%s/app.pkg" % GameID)
+			info[GameID].is_usable = True
+		except Exception as e:
+			print("Error processing %s, ignorining..." % GameID)
+			print("type error: " + str(e))
 
 	return info[GameID]
 
@@ -84,7 +88,7 @@ for tbl in tables :
 				% (cusa.sfo['TITLE_ID'], cusa.sfo['CONTENT_ID'], cusa.sfo['TITLE'], cusa.sfo['TITLE_ID'], cusa.size))
 			print("Completed %d" % cusa.size)
 		else :
-			print("Skipped")
+			print("Ignoring")
 
 	if(len(sql_list) > 0) :
 		cursor.execute("INSERT INTO %s VALUES %s;" % (tbl[0], ', '.join(sql_list)))
