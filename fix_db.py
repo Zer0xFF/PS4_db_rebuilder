@@ -80,7 +80,7 @@ for tbl in tables :
 		print("	Processing GameID: %s... " % GameID, end='')
 		cusa = get_game_info_by_id(GameID)
 		if(cusa.is_usable == True) :
-			sql_list.append("""("%s", "%s", "%s", "/user/appmeta/%s", "2018-07-27 15:06:46.822", "0", "0", "5", "1", "100", "0", "151", "5", "1", "gd", "0", "0", "0", "0", NULL, NULL, NULL, "%d", "2018-07-27 15:06:46.802", "0", "game", NULL, "0", "0", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, NULL, "0", "0", NULL, "2018-07-27 15:06:46.757")"""
+			sql_list.append("""("%s", "%s", "%s", "/user/appmeta/%s", "2018-07-27 15:06:46.822", "0", "0", "5", "1", "100", "0", "151", "5", "1", "gd", "0", "0", "0", "0", NULL, NULL, NULL, "%d", "2018-07-27 15:06:46.802", "0", "game", NULL, "0", "0", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, NULL, "0", "0", NULL, "2018-07-27 15:06:46.757",0,0,0,0,0,0)"""
 				% (cusa.sfo['TITLE_ID'], cusa.sfo['CONTENT_ID'], cusa.sfo['TITLE'], cusa.sfo['TITLE_ID'], cusa.size))
 			print("Completed %d" % cusa.size)
 		else :
