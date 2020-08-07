@@ -11,7 +11,7 @@ Ps4 built-in database rebuilder has the tendency to remove fpkg from the databas
 
 **NOTE**: Sony seems to have modified the PS4 DB from 5.05 to the 6.72 system version. Taking this into account, follow the 3) step accordingly to your system. Versions after 5.05 may have to follow the step accordingly to the 6.72 system version.
 
-1) Recursively clone this repo or download a [Release](https://github.com/Zer0xFF/PS4_db_rebuilder/releases)
+1) Recursively clone (`git clone <url> --recursive`)  this repo or download a [Release](https://github.com/Zer0xFF/PS4_db_rebuilder/releases)
 
 2) Start FTP server on the PS4
 
